@@ -1,0 +1,163 @@
+package testingGUI;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JTextPane;
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import java.awt.Canvas;
+import java.awt.Panel;
+import java.awt.TextField;
+
+public class GUITesting {
+
+	private JFrame frame;
+
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					GUITesting window = new GUITesting();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+
+	public GUITesting() {
+		initialize();
+	}
+
+	private void initialize() {
+		frame = new JFrame();
+		frame.getContentPane().setBackground(Color.WHITE);
+		frame.setBounds(100, 100, 852, 634);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JTextPane txtpnShoppingPage = new JTextPane();
+		txtpnShoppingPage.setEditable(false);
+		txtpnShoppingPage.setFont(new Font("Tahoma", Font.PLAIN, 33));
+		txtpnShoppingPage.setBounds(10, 11, 229, 52);
+		txtpnShoppingPage.setText("Shopping Page");
+		frame.getContentPane().add(txtpnShoppingPage);
+		
+		JButton btnNewButton = new JButton("Check Out");
+		btnNewButton.setBounds(593, 478, 89, 23);
+		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Show Cart");
+		btnNewButton_1.setBounds(689, 478, 89, 23);
+		frame.getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Add");
+		btnNewButton_2.setBounds(524, 478, 59, 23);
+		frame.getContentPane().add(btnNewButton_2);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setEditable(false);
+		textArea.setBackground(Color.GRAY);
+		textArea.setLineWrap(true);
+		textArea.setText("4");
+		textArea.setBounds(459, 479, 46, 22);
+		frame.getContentPane().add(textArea);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setEditable(false);
+		textPane.setText("$2.69");
+		textPane.setBounds(459, 349, 46, 20);
+		frame.getContentPane().add(textPane);
+		
+		JTextPane txtpnPerDozen = new JTextPane();
+		txtpnPerDozen.setEditable(false);
+		txtpnPerDozen.setText("Per Dozen");
+		txtpnPerDozen.setBounds(524, 349, 64, 20);
+		frame.getContentPane().add(txtpnPerDozen);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBackground(Color.BLACK);
+		separator.setForeground(Color.BLACK);
+		separator.setBounds(439, 134, 387, 2);
+		frame.getContentPane().add(separator);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setOrientation(SwingConstants.VERTICAL);
+		separator_1.setForeground(Color.BLACK);
+		separator_1.setBackground(Color.BLACK);
+		separator_1.setBounds(439, 134, 2, 406);
+		frame.getContentPane().add(separator_1);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBackground(Color.BLACK);
+		separator_2.setForeground(Color.BLACK);
+		separator_2.setBounds(439, 538, 387, 2);
+		frame.getContentPane().add(separator_2);
+		
+		JSeparator separator_3 = new JSeparator();
+		separator_3.setBackground(Color.BLACK);
+		separator_3.setForeground(Color.BLACK);
+		separator_3.setOrientation(SwingConstants.VERTICAL);
+		separator_3.setBounds(825, 134, 2, 406);
+		frame.getContentPane().add(separator_3);
+		
+		TextField textField = new TextField();
+		textField.setText("Search for an item...");
+		textField.setFont(new Font("Dialog", Font.PLAIN, 15));
+		textField.setBounds(29, 106, 797, 22);
+		frame.getContentPane().add(textField);
+		
+		JTextPane txtpnABeautifulEgg = new JTextPane();
+		txtpnABeautifulEgg.setEditable(false);
+		txtpnABeautifulEgg.setText("A beautiful egg.");
+		txtpnABeautifulEgg.setBounds(609, 258, 145, 23);
+		frame.getContentPane().add(txtpnABeautifulEgg);
+		
+		JTextPane txtpnInstockLeft = new JTextPane();
+		txtpnInstockLeft.setEditable(false);
+		txtpnInstockLeft.setText("In-Stock: 240 left");
+		txtpnInstockLeft.setBounds(609, 183, 145, 23);
+		frame.getContentPane().add(txtpnInstockLeft);
+		
+		JTextPane txtpnOutOfStock = new JTextPane();
+		txtpnOutOfStock.setEditable(false);
+		txtpnOutOfStock.setText("Out of Stock");
+		txtpnOutOfStock.setBounds(609, 201, 145, 23);
+		frame.getContentPane().add(txtpnOutOfStock);
+		
+		JSeparator separator_4 = new JSeparator();
+		separator_4.setBackground(Color.BLACK);
+		separator_4.setForeground(Color.BLACK);
+		separator_4.setOrientation(SwingConstants.VERTICAL);
+		separator_4.setBounds(29, 134, 2, 406);
+		frame.getContentPane().add(separator_4);
+		
+		JSeparator separator_5 = new JSeparator();
+		separator_5.setForeground(Color.BLACK);
+		separator_5.setBackground(Color.BLACK);
+		separator_5.setBounds(29, 538, 393, 2);
+		frame.getContentPane().add(separator_5);
+		
+		JSeparator separator_6 = new JSeparator();
+		separator_6.setBackground(Color.BLACK);
+		separator_6.setForeground(Color.BLACK);
+		separator_6.setBounds(29, 134, 393, 2);
+		frame.getContentPane().add(separator_6);
+		
+		JSeparator separator_7 = new JSeparator();
+		separator_7.setBackground(Color.BLACK);
+		separator_7.setForeground(Color.BLACK);
+		separator_7.setOrientation(SwingConstants.VERTICAL);
+		separator_7.setBounds(421, 134, 2, 406);
+		frame.getContentPane().add(separator_7);
+	}
+}
