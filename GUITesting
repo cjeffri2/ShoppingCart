@@ -14,12 +14,15 @@ import javax.swing.SwingConstants;
 import java.awt.Canvas;
 import java.awt.Panel;
 import java.awt.TextField;
+import javax.swing.JLayeredPane;
 
 public class GUITesting {
 
-	private JFrame frame;
+	JFrame frame;
 
-
+	/**
+	 * Launch the application.
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -33,11 +36,16 @@ public class GUITesting {
 		});
 	}
 
-
+	/**
+	 * Create the application.
+	 */
 	public GUITesting() {
 		initialize();
 	}
 
+	/**
+	 * Initialize the contents of the frame.
+	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.WHITE);
