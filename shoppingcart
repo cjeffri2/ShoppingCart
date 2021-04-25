@@ -1,0 +1,61 @@
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Color;
+import javax.swing.JTextPane;
+import java.awt.Font;
+import javax.swing.JButton;
+
+public class shoppingcart extends JFrame {
+
+	private JPanel contentPane;
+
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					shoppingcart frame = new shoppingcart();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+
+	public shoppingcart() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JTextPane txtpnShoppingCart = new JTextPane();
+		txtpnShoppingCart.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		txtpnShoppingCart.setEditable(false);
+		txtpnShoppingCart.setText("Shopping Cart:");
+		txtpnShoppingCart.setBounds(10, 11, 167, 36);
+		contentPane.add(txtpnShoppingCart);
+		
+		JTextPane txtpnCartDesc = new JTextPane();
+		txtpnCartDesc.setEditable(false);
+		txtpnCartDesc.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		txtpnCartDesc.setText("4 x Eggs");
+		txtpnCartDesc.setBounds(20, 58, 390, 155);
+		contentPane.add(txtpnCartDesc);
+		
+		JButton btnCheckOut = new JButton("Check Out");
+		btnCheckOut.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnCheckOut.setBounds(300, 227, 110, 23);
+		contentPane.add(btnCheckOut);
+	}
+
+}
