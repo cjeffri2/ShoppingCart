@@ -28,7 +28,7 @@ public class Database {
         //createTable(connection);
 
         // INSERT (connection, id, type, name, price, amount, description)
-        //insert(connection,"Fruit","Strawberries",3.89, 30, "16oz Container");
+        insertitems(connection,"Fruit","Strawberries",3.89, 30, "16oz Container");
         //insert(connection,"Fruit", "Green Apples",1.29, 30, "1lb of Ripe Apples");
         //insert(connection,"Cereal","Kapn Krunch",10.99, 15, "Berry flavorful!");
         //insert(connection,"Cereal", "Cheerios", 9.99, 15, "Need lower cholesterol?");
@@ -36,12 +36,19 @@ public class Database {
         //insert(connection,"Protein", "Vension Burgers", 79.95, 2, "Pack of 30.");
         //insert(connection,"Electronics", "Wireless Charger", 9.99, 10, "Qi supported.");
         //insert(connection,"Electronics", "Power Brick", 14.99, 10, "20W MagSafe.");
-     
+        
+        //INSERT (connection, firstname, lastname, position, address, username, password, salary);
+        //insertusers(connection, "Gary", "Vee", "Manager", "CA", "GaryVee", "password", 65000);
+        //insertusers(connection, "Tom", "Jefferson", "Employee", "CA", "ToJeff01", "password", 75000);
+       // insertusers(connection, "Cristian", "Jeffries", "Employee", "CA", "CrJeff02", "password", 80000);
+        //insertusers(connection, "Logan", "Ferrera", "Employee", "CA", "LoFerr03", "password", 76000);
+        
+        
 
 
 
         //SELECT
-        select(connection);
+        select(connection, "items");
 
         // UPDATE(connection, id, amount)
         //update(connection, );
@@ -88,7 +95,7 @@ public class Database {
         System.out.println("Table Created...");
     }
 
-    public static void insert(Connection connection, String type, String name, double price, int amount, String description)
+    public static void insertitems(Connection connection, String type, String name, double price, int amount, String description)
     {
         Statement statement = null;
         try{
@@ -116,13 +123,46 @@ public class Database {
             System.exit(0);
         }
     }
+    
+    public static void insertusers(Connection connection, String firstname, String lastname, String position, String address, String username, String password, int salary) {
+    	Statement statement = null;
+        try{
+            connection.setAutoCommit(false);
+            statement = connection.createStatement();
+            String sqlCommand =
+                    "INSERT INTO users("+
+                        "FIRSTNAME, "+
+                        "LASTNAME, "+
+                        "POSITION, "+
+                        "ADDRESS, "+
+                        "USERNAME, "+
+                        "PASSWORD, "+
+                        "SALARY"+
+                    ") ";
+            sqlCommand += String.format("VALUES('%s', '%s', '%s', '%s', '%s', '%s', %d);",firstname,lastname,position,address,username, password, salary );
+            statement.executeUpdate(sqlCommand);
+            statement.close();
+            connection.commit();
+            System.out.println("Data Inserted...");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.exit(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Catch all Exception occurred: "+e.getClass().getName()+": "+e.getMessage());
+            System.exit(0);
+        }    	
+    }
 
-    public static void select(Connection connection)
+    public static void select(Connection connection, String table)
     {
-
+    	final String items = "items";
+    	final String users = "users";
         Statement statement = null;
         try{
             statement = connection.createStatement();
+            
+            if (table.compareTo(items) == 0) {
             String sqlCommand =
                     "SELECT * FROM items;";
             ResultSet resultSet = statement.executeQuery(sqlCommand);
@@ -135,11 +175,30 @@ public class Database {
                 String description = resultSet.getString("description");
 
                 System.out.println(String.format("ID = %d\n TYPE = %s\n NAME = %s\n PRICE = %.2f\n AMOUNT = %d\n DESCRIPTION = %s\n",id,type,name,price,amount,description));
+            }}else
+            
+            if (table.compareTo(users) == 0) {
+            	
+            String sqlCommand =
+                        "SELECT * FROM users;";
+            ResultSet resultSet = statement.executeQuery(sqlCommand);
+            while(resultSet.next()){
+            	int id = resultSet.getInt("id");
+            	String firstname = resultSet.getString("firstname");
+                String lastname = resultSet.getString("lastname");
+                String position = resultSet.getString("position");
+                String address = resultSet.getString("address");
+                String username = resultSet.getString("username");
+                String password = resultSet.getString("password");
+                int salary = resultSet.getInt("salary");
+                System.out.println(String.format("ID = %d\n FIRSTNAME = %s\n LASTNAME = %s\n POSITION = %s\n ADDRESS = %s\n USERNAME = %s\n PASSWORD = %s\n SALARY = %s",id,firstname,lastname,position,address,username,password, salary));            	
+            	
             }
             resultSet.close();
             statement.close();
             System.out.println("Data Selected...");
-        } catch (SQLException e) {
+            }}
+        	catch (SQLException e) {
             e.printStackTrace();
             System.exit(0);
         } catch (Exception e) {
@@ -149,7 +208,7 @@ public class Database {
         }
     }
 
-    public static void update(Connection connection, int id, int amount)
+    public static void update(Connection connection, String table, int id, int amount)
     {
         Statement statement = null;
         try{
@@ -163,7 +222,7 @@ public class Database {
             System.out.println("Data Updated...");
 
 
-            select(connection);
+            select(connection, table);
         } catch (SQLException e) {
             e.printStackTrace();
             System.exit(0);
@@ -174,7 +233,7 @@ public class Database {
         }
     }
 
-    public static void delete(Connection connection, int id)
+    public static void delete(Connection connection, String table, int id)
     {
         Statement statement = null;
         try{
@@ -186,9 +245,9 @@ public class Database {
             connection.commit();
             statement.close();
             System.out.println("Data Deleted...");
-
-
-            select(connection);
+            
+            
+            select(connection, table);
         } catch (SQLException e) {
             e.printStackTrace();
             System.exit(0);
