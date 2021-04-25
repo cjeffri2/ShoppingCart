@@ -19,10 +19,9 @@ import javax.swing.JLayeredPane;
 public class GUITesting {
 
 	JFrame frame;
+	private JButton btnItem2;
 
-	/**
-	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -36,16 +35,12 @@ public class GUITesting {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
+
 	public GUITesting() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.WHITE);
@@ -127,19 +122,19 @@ public class GUITesting {
 		JTextPane txtpnABeautifulEgg = new JTextPane();
 		txtpnABeautifulEgg.setEditable(false);
 		txtpnABeautifulEgg.setText("A beautiful egg.");
-		txtpnABeautifulEgg.setBounds(609, 258, 145, 23);
+		txtpnABeautifulEgg.setBounds(459, 183, 205, 23);
 		frame.getContentPane().add(txtpnABeautifulEgg);
 		
 		JTextPane txtpnInstockLeft = new JTextPane();
 		txtpnInstockLeft.setEditable(false);
 		txtpnInstockLeft.setText("In-Stock: 240 left");
-		txtpnInstockLeft.setBounds(609, 183, 145, 23);
+		txtpnInstockLeft.setBounds(459, 217, 205, 23);
 		frame.getContentPane().add(txtpnInstockLeft);
 		
 		JTextPane txtpnOutOfStock = new JTextPane();
 		txtpnOutOfStock.setEditable(false);
 		txtpnOutOfStock.setText("Out of Stock");
-		txtpnOutOfStock.setBounds(609, 201, 145, 23);
+		txtpnOutOfStock.setBounds(459, 239, 159, 23);
 		frame.getContentPane().add(txtpnOutOfStock);
 		
 		JSeparator separator_4 = new JSeparator();
@@ -167,5 +162,65 @@ public class GUITesting {
 		separator_7.setOrientation(SwingConstants.VERTICAL);
 		separator_7.setBounds(421, 134, 2, 406);
 		frame.getContentPane().add(separator_7);
+		
+		JButton btnItem = new JButton("Item Number 1");
+		btnItem.setHorizontalAlignment(SwingConstants.LEFT);
+		btnItem.setBounds(39, 147, 372, 23);
+		frame.getContentPane().add(btnItem);
+		
+		btnItem2 = new JButton("Item Number 2");
+		btnItem2.setHorizontalAlignment(SwingConstants.LEFT);
+		btnItem2.setBounds(39, 183, 372, 23);
+		frame.getContentPane().add(btnItem2);
+		
+		JButton btnItem3 = new JButton("Item Number 3");
+		btnItem3.setHorizontalAlignment(SwingConstants.LEFT);
+		btnItem3.setBounds(39, 217, 372, 23);
+		frame.getContentPane().add(btnItem3);
+		
+		JButton btnItem4 = new JButton("Item Number 4");
+		btnItem4.setHorizontalAlignment(SwingConstants.LEFT);
+		btnItem4.setBounds(39, 251, 372, 23);
+		frame.getContentPane().add(btnItem4);
+		
+		JButton btnItem5 = new JButton("Item Number 5");
+		btnItem5.setHorizontalAlignment(SwingConstants.LEFT);
+		btnItem5.setBounds(39, 285, 372, 23);
+		frame.getContentPane().add(btnItem5);
+		
+		JButton btnItem6 = new JButton("Item Number 6");
+		btnItem6.setHorizontalAlignment(SwingConstants.LEFT);
+		btnItem6.setBounds(39, 319, 372, 23);
+		frame.getContentPane().add(btnItem6);
+		
+		JButton btnItem7 = new JButton("Item Number 7");
+		btnItem7.setHorizontalAlignment(SwingConstants.LEFT);
+		btnItem7.setBounds(39, 349, 372, 23);
+		frame.getContentPane().add(btnItem7);
+		
+		JButton btnItem8 = new JButton("Item Number 8");
+		btnItem8.setHorizontalAlignment(SwingConstants.LEFT);
+		btnItem8.setBounds(39, 381, 372, 23);
+		frame.getContentPane().add(btnItem8);
+		
+		JButton btnItem9 = new JButton("Item Number 9");
+		btnItem9.setHorizontalAlignment(SwingConstants.LEFT);
+		btnItem9.setBounds(39, 415, 372, 23);
+		frame.getContentPane().add(btnItem9);
+		
+		JButton btnItem10 = new JButton("Item Number 10");
+		btnItem10.setHorizontalAlignment(SwingConstants.LEFT);
+		btnItem10.setBounds(39, 448, 372, 23);
+		frame.getContentPane().add(btnItem10);
+		
+		JButton btnItem11 = new JButton("Item Number 11");
+		btnItem11.setHorizontalAlignment(SwingConstants.LEFT);
+		btnItem11.setBounds(39, 482, 372, 23);
+		frame.getContentPane().add(btnItem11);
+		
+		JButton btnItem12 = new JButton("Item Number 12");
+		btnItem12.setHorizontalAlignment(SwingConstants.LEFT);
+		btnItem12.setBounds(41, 516, 372, 23);
+		frame.getContentPane().add(btnItem12);
 	}
 }
