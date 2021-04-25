@@ -117,7 +117,6 @@ public class ManagerView {
 		frame.getContentPane().add(textField);
 		
 		JTextPane txtpnABeautifulEgg = new JTextPane();
-		txtpnABeautifulEgg.setEditable(false);
 		txtpnABeautifulEgg.setText("A beautiful egg.");
 		txtpnABeautifulEgg.setBounds(459, 183, 205, 23);
 		frame.getContentPane().add(txtpnABeautifulEgg);
@@ -128,7 +127,6 @@ public class ManagerView {
 		frame.getContentPane().add(txtpnInstockLeft);
 		
 		JTextPane txtpnOutOfStock = new JTextPane();
-		txtpnOutOfStock.setEditable(false);
 		txtpnOutOfStock.setText("Out of Stock");
 		txtpnOutOfStock.setBounds(459, 239, 159, 23);
 		frame.getContentPane().add(txtpnOutOfStock);
