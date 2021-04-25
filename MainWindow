@@ -15,7 +15,7 @@ import java.awt.Panel;
 import java.awt.TextField;
 import javax.swing.JLayeredPane;
 
-public class GUITesting {
+public class MainWindow {
 
 	JFrame frame;
 
@@ -25,7 +25,7 @@ public class GUITesting {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUITesting window = new GUITesting();
+					MainWindow window = new MainWindow();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +35,7 @@ public class GUITesting {
 	}
 
 
-	public GUITesting() {
+	public MainWindow() {
 		initialize();
 	}
 
