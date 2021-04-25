@@ -1,0 +1,66 @@
+package testingGUI;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTextPane;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JButton;
+
+public class logout extends JFrame {
+
+	private JPanel contentPane;
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					logout frame = new logout();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+
+	public logout() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 585, 449);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JTextPane txtpnLoggedOut = new JTextPane();
+		txtpnLoggedOut.setEditable(false);
+		txtpnLoggedOut.setFont(new Font("Sitka Text", Font.BOLD, 30));
+		txtpnLoggedOut.setText("Logged Out");
+		txtpnLoggedOut.setBounds(186, 151, 192, 49);
+		contentPane.add(txtpnLoggedOut);
+		
+		JTextPane txtpnThankYouFor = new JTextPane();
+		txtpnThankYouFor.setText("Thank you for shopping!");
+		txtpnThankYouFor.setFont(new Font("Sitka Text", Font.PLAIN, 12));
+		txtpnThankYouFor.setEditable(false);
+		txtpnThankYouFor.setBounds(206, 198, 192, 22);
+		contentPane.add(txtpnThankYouFor);
+		
+		JTextPane txtpnyourCartWill = new JTextPane();
+		txtpnyourCartWill.setText("(Your cart will be saved, don't worry)");
+		txtpnyourCartWill.setFont(new Font("Sitka Text", Font.PLAIN, 12));
+		txtpnyourCartWill.setEditable(false);
+		txtpnyourCartWill.setBounds(172, 219, 226, 22);
+		contentPane.add(txtpnyourCartWill);
+		
+		JButton btnNewButton = new JButton("Return to Login");
+		btnNewButton.setBounds(229, 271, 107, 22);
+		contentPane.add(btnNewButton);
+	}
+}
