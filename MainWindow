@@ -221,5 +221,10 @@ public class MainWindow {
 		btnItem12.setHorizontalAlignment(SwingConstants.LEFT);
 		btnItem12.setBounds(41, 516, 372, 23);
 		frame.getContentPane().add(btnItem12);
+		
+		JButton btnLogOut = new JButton("Logout");
+		btnLogOut.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnLogOut.setBounds(675, 66, 151, 34);
+		frame.getContentPane().add(btnLogOut);
 	}
 }
