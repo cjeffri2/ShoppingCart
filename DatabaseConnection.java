@@ -40,7 +40,7 @@ public class Database {
         //INSERT (connection, firstname, lastname, position, address, username, password, salary);
         //insertusers(connection, "Gary", "Vee", "Manager", "CA", "GaryVee", "password", 65000);
         //insertusers(connection, "Tom", "Jefferson", "Employee", "CA", "ToJeff01", "password", 75000);
-       // insertusers(connection, "Cristian", "Jeffries", "Employee", "CA", "CrJeff02", "password", 80000);
+        //insertusers(connection, "Cristian", "Jeffries", "Employee", "CA", "CrJeff02", "password", 80000);
         //insertusers(connection, "Logan", "Ferrera", "Employee", "CA", "LoFerr03", "password", 76000);
         
         
