@@ -7,7 +7,7 @@ public class DB {
 	static ResultSet resultSet = null;
 	static PreparedStatement preparedStatement = null;
 	
-	//establishes connection with database - shoppingcart 
+	//establishes connection with database - shoppingcart with username postgres and password password
 	public static void main(String[] args) {
 		
 	
@@ -25,7 +25,7 @@ public class DB {
 		
 	
 	
-	//method to create the tables (items, users, users.employees, users.managers) YOU DONT NEED TO RUN THIS
+	//create table method
 	/*
 		try {
 			stmt = c.createStatement();
@@ -35,10 +35,9 @@ public class DB {
 			stmt.executeUpdate(items);
 			
 			//USERS
-			String users = ("CREATE TABLE users(ID SERIAL UNIQUE PRIMARY KEY NOT NULL, FIRSTNAME TEXT NOT NULL, LASTNAME TEXT NOT NULL, ADDRESS CHAR(20), USERNAME CHAR(15) NOTNULL, PASSWORD CHAR(50) NOT NULL, SALARY REAL);");
+			String users = ("CREATE TABLE users(ID SERIAL UNIQUE PRIMARY KEY NOT NULL, FIRSTNAME TEXT NOT NULL, LASTNAME TEXT NOT NULL, POSITION TEXT NOT NULL, ADDRESS CHAR(20), USERNAME CHAR(15) NOTNULL, PASSWORD CHAR(50) NOT NULL, SALARY REAL);");
 			stmt.executeUpdate(users);
-			
-			//USERS.EMPLOYEES
+		
 			stmt.close();
 			c.close();
 			System.out.println("Created table succesfully.");
