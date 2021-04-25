@@ -1,4 +1,3 @@
-package testingGUI;
 
 import java.awt.EventQueue;
 
@@ -19,7 +18,7 @@ import javax.swing.JLayeredPane;
 public class GUITesting {
 
 	JFrame frame;
-	private JButton btnItem2;
+
 
 
 	public static void main(String[] args) {
@@ -168,7 +167,7 @@ public class GUITesting {
 		btnItem.setBounds(39, 147, 372, 23);
 		frame.getContentPane().add(btnItem);
 		
-		btnItem2 = new JButton("Item Number 2");
+		JButton btnItem2 = new JButton("Item Number 2");
 		btnItem2.setHorizontalAlignment(SwingConstants.LEFT);
 		btnItem2.setBounds(39, 183, 372, 23);
 		frame.getContentPane().add(btnItem2);
