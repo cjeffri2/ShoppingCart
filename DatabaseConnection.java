@@ -4,31 +4,15 @@ import java.math.BigDecimal;
 import java.sql.*;
 
 public class Database {
-    public static void main( String[] args )
-    {
-        Connection connection = null;
-        try{
-            Class.forName("org.postgresql.Driver");
-            connection = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/shoppingcart",
-                    "postgres",
-                    "password"
-            );
-            System.out.println("Opened Database Successfully!");
-        }catch(ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println("Catch all Exception occurred: "+e.getClass().getName()+": "+e.getMessage());
-        }
-
+	
+	Connection connection = getConnection();
+   
+    	
         // Create Table
-        //createTable(connection);
-
+		//createTable()
+	
         // INSERT (connection, id, type, name, price, amount, description)
-        insertitems(connection,"Fruit","Strawberries",3.89, 30, "16oz Container");
+        //insertitems(connection,"Fruit","Strawberries",3.89, 30, "16oz Container");
         //insert(connection,"Fruit", "Green Apples",1.29, 30, "1lb of Ripe Apples");
         //insert(connection,"Cereal","Kapn Krunch",10.99, 15, "Berry flavorful!");
         //insert(connection,"Cereal", "Cheerios", 9.99, 15, "Need lower cholesterol?");
@@ -40,48 +24,43 @@ public class Database {
         //INSERT (connection, firstname, lastname, position, address, username, password, salary);
         //insertusers(connection, "Gary", "Vee", "Manager", "CA", "GaryVee", "password", 65000);
         //insertusers(connection, "Tom", "Jefferson", "Employee", "CA", "ToJeff01", "password", 75000);
-        //insertusers(connection, "Cristian", "Jeffries", "Employee", "CA", "CrJeff02", "password", 80000);
+       // insertusers(connection, "Cristian", "Jeffries", "Employee", "CA", "CrJeff02", "password", 80000);
         //insertusers(connection, "Logan", "Ferrera", "Employee", "CA", "LoFerr03", "password", 76000);
         
-        
-
-
-
         //SELECT
-        select(connection, "items");
+        //select(connection, "items");
 
         // UPDATE(connection, id, amount)
         //update(connection, );
 
         // DELETE (connection, id)
         //delete(connection, 14);
-        
-        
-
-
-        // Close the connection once we are finished
+               
+        /* Close the connection once we are finished
         try {
             if(connection != null)
                 connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
+    
+    */
 
-    public static void createTable(Connection connection)
+    
+    
+    
+    public void createTable(Connection connection)
     {
         Statement statement = null;
         try{
             statement = connection.createStatement();
             String sqlCommand =
-                    "CREATE TABLE items("+
-                        "ID SERIAL UNIQUE PRIMARY KEY NOT NULL, "+
-                        "TYPE CHAR(15), "+
-                        "NAME TEXT NOT NULL, "+
-                        "PRICE DECIMAL(12,2) NOT NULL, "+
-                        "AMOUNT SMALLINT,"+
-                        "DESCRIPTION TEXT NOT NULL"+
-                    ")";
+                    "CREATE TABLE items(ID SERIAL PRIMARY KEY NOT NULL, "
+                    + "TYPE TEXT NOT NULL, "
+                    + "NAME TEXT NOT NULL, "
+                    + "PRICE DECIMAL(12,2) NOT NULL, "
+                    + "AMOUNT SMALLINT, "
+                    + "DESCRIPTION TEXT NOT NULL);";
             statement.executeUpdate(sqlCommand);
             statement.close();
         } catch (SQLException e) {
@@ -95,20 +74,19 @@ public class Database {
         System.out.println("Table Created...");
     }
 
-    public static void insertitems(Connection connection, String type, String name, double price, int amount, String description)
+    public void insertitems(Connection connection, String type, String name, double price, int amount, String description)
     {
         Statement statement = null;
         try{
             connection.setAutoCommit(false);
             statement = connection.createStatement();
             String sqlCommand =
-                    "INSERT INTO items("+
-                        "TYPE, "+
-                        "NAME, "+
-                        "PRICE, "+
-                        "AMOUNT, "+
-                        "DESCRIPTION"+
-                    ") ";
+                    "INSERT INTO items("
+                    + "TYPE, "
+                    + "NAME, "
+                    + "PRICE, "
+                    + "AMOUNT, "
+                    + "DESCRIPTION) ";
             sqlCommand += String.format("VALUES('%s', '%s', %.2f, %d, '%s');",type,name,price,amount,description);
             statement.executeUpdate(sqlCommand);
             statement.close();
@@ -124,7 +102,7 @@ public class Database {
         }
     }
     
-    public static void insertusers(Connection connection, String firstname, String lastname, String position, String address, String username, String password, int salary) {
+    public void insertusers(Connection connection, String firstname, String lastname, String position, String address, String username, String password, int salary) {
     	Statement statement = null;
         try{
             connection.setAutoCommit(false);
@@ -154,7 +132,7 @@ public class Database {
         }    	
     }
 
-    public static void select(Connection connection, String table)
+    public void select(Connection connection, String table)
     {
     	final String items = "items";
     	final String users = "users";
@@ -208,7 +186,7 @@ public class Database {
         }
     }
 
-    public static void update(Connection connection, String table, int id, int amount)
+    public void update(Connection connection, String table, int id, int amount)
     {
         Statement statement = null;
         try{
@@ -233,7 +211,7 @@ public class Database {
         }
     }
 
-    public static void delete(Connection connection, String table, int id)
+    public void delete(Connection connection, String table, int id)
     {
         Statement statement = null;
         try{
@@ -257,4 +235,28 @@ public class Database {
             System.exit(0);
         }
     }
+
+
+	public Connection getConnection() {
+		Connection connection = null;
+        try{
+            Class.forName("org.postgresql.Driver");
+            connection = DriverManager.getConnection(
+                    "jdbc:postgresql://localhost:5432/shoppingcart",
+                    "postgres",
+                    "password"
+            );
+            System.out.println("Opened Database Successfully!");
+        }catch(ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Catch all Exception occurred: "+e.getClass().getName()+": "+e.getMessage());
+        }
+        return connection;
+	}
+	
+	
 }
