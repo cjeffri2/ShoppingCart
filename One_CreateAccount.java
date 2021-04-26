@@ -1,4 +1,5 @@
 package main;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -99,7 +100,14 @@ public class One_CreateAccount extends JPanel{
 	
 		JButton btnNewButton = new JButton("Create Account");
 		btnNewButton.setBounds(560, 404, 128, 31);
-		btnNewButton.addActionListener(new SwitchPage("panelShopping"));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==btnNewButton) {
+					Two_ShoppingPage panel = new Two_ShoppingPage();
+					main.changePannel(panel);
+				}
+			}
+		});
 		add(btnNewButton);
 		
 		JList list = new JList();
@@ -132,7 +140,7 @@ public class One_CreateAccount extends JPanel{
 		}
 		
 		public void actionPerformed(ActionEvent event) {
-			showCard(cardName);
+			//showCard(cardName);
 			}
 		} 
 }
